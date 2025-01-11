@@ -1,30 +1,42 @@
 #include<iostream>
-
 using namespace std;
 
-class Arithmatic
+template <class T>
+class Arithmetic
 {
     private:
-    int a;
-    int b;
-
+        T a;
+        T b;
     public:
-    Arithmatic(int a, int b);
-    void PrintAll();
+        Arithmetic(T a, T b);
+        T add();
+        T sub();
 };
 
-Arithmatic::Arithmatic(int a, int b)
+template<class T>
+Arithmetic<T>::Arithmetic(T a, T b)
 {
     this->a = a;
     this->b = b;
 }
 
-void Arithmatic::PrintAll()
+template<class T>
+T Arithmetic<T>::add()
 {
-    cout<<"a: "<<this->a<<" b: "<<this->b;
+    T c = this->a + this->b;
 }
+
+template<class T>
+T Arithmetic<T>::sub()
+{
+    T c = this->a - this->b;
+    return c;
+}
+
 int main()
 {
-    Arithmatic test(1,2);
-    test.PrintAll();
+    Arithmetic<int> a1(1,2);
+    cout<<a1.add()<<endl;
+    Arithmetic<float> a2(2.3,4.5);
+    cout<<a2.add()<<endl;
 }
